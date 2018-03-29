@@ -1,0 +1,36 @@
+{
+    "id": [
+        {
+            "id": "21152180-307a-11e8-89b0-31a242f77288",
+            "name": "Guitare",
+            "slug": "guitare",
+            "category_id": null,
+            "created_at": "2018-03-25 22:16:13",
+            "updated_at": "2018-03-25 22:16:13"
+        },
+        {
+            "id": "21166180-307a-11e8-b35d-0bcfb550baf1",
+            "name": "Acoustique",
+            "slug": "acoustique",
+            "category_id": "21152180-307a-11e8-89b0-31a242f77288",
+            "created_at": "2018-03-25 22:16:13",
+            "updated_at": "2018-03-25 22:16:13"
+        },
+        {
+            "id": "21175a70-307a-11e8-bddb-1123a813d2b6",
+            "name": "Classique",
+            "slug": "classique",
+            "category_id": "21166180-307a-11e8-b35d-0bcfb550baf1",
+            "created_at": "2018-03-25 22:16:13",
+            "updated_at": "2018-03-25 22:16:13"
+        },
+        {
+            "id": "435679f0-3177-11e8-8377-4d523d2046ab",
+            "name": "subclassique",
+            "slug": "subclassique",
+            "category_id": "21175a70-307a-11e8-bddb-1123a813d2b6",
+            "created_at": "2018-03-27 04:28:13",
+            "updated_at": "2018-03-27 04:28:13"
+        }
+    ]
+}

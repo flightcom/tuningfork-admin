@@ -90,9 +90,14 @@ const convertRESTRequestToHTTP = (type, resource, params) => {
  */
 const convertHTTPResponseToREST = (response, type, resource, params) => {
   const { headers, json } = response;
-  console.log(json);
+//   console.log(type, json);
   switch (type) {
     case GET_LIST:
+      return {
+        data: json.data.map(x => x),
+        total: json.total
+      };
+    case GET_MANY:
       return {
         data: json.data.map(x => x),
         total: json.total

@@ -1,16 +1,25 @@
 import React from 'react';
 import { CardActions } from 'material-ui/Card';
 import {
+    BooleanField,
+    BooleanInput,
     CreateButton,
     Datagrid,
     EditButton,
     EmailField,
     Filter,
     List,
+    ReferenceInput,
     RefreshButton,
+    SelectInput,
     TextField,
     TextInput,
 } from 'admin-on-rest';
+
+import {
+    colorGreen,
+    colorRed,
+} from '../../styles/common';
 
 const cardActionStyle = {
     zIndex: 2,
@@ -28,21 +37,32 @@ const InstrumentListActions = ({ resource, filters, displayedFilters, filterValu
 
 const InstrumentFilter = (props) => (
     <Filter label={null} {...props}>
-        <TextInput label="Prénom" source="first_name" />
-        <TextInput label="Nom" source="last_name" />
-        <TextInput label="Courriel" source="email" />
-        <TextInput label="Téléphone" source="phone" />
+        <ReferenceInput label="Marque" source="brand.id" reference="brands">
+            <SelectInput />
+        </ReferenceInput>
+        <BooleanInput label="À vérifier" source="to_be_checked" />
     </Filter>
 );
 
+const colored = Component => props => props.record[props.source]
+    ? <Component {...props} elStyle={colorRed} />
+    : <Component {...props} elStyle={colorGreen} />
+
+const ToBeCheckedField = colored(BooleanField);
+
+
 export const InstrumentList = (props) => (
-    <List title="Utilisateurs" actions={<UserListActions />} {...props} filters={<UserFilter />}>
+    <List
+        title="Instruments"
+        actions={<InstrumentListActions />}
+        filters={<InstrumentFilter />}
+        {...props}
+    >
         <Datagrid>
-            <TextField source="first_name" label="Prénom" />
-            <TextField source="last_name" label="Nom" />
-            <TextField source="phone" label="Téléphone" />
-            <EmailField source="email" label="Courriel" />
-            <EditButton />
+            <TextField source="model" label="Modèle" />
+            <TextField source="brand.name" label="Marque" />
+            <ToBeCheckedField source="to_be_checked" label="À Vérfier" />
+            <EditButton label={null} />
         </Datagrid>
     </List>
 );

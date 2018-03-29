@@ -16,6 +16,10 @@
     },
     "dependencies": {
         "admin-on-rest": "~1.4.0",
+        "aor-dependent-input": "^1.2.0",
+        "lodash.get": "~4.4.2",
+        "material-ui-chip-input": "~0.18.5",
+        "prop-types": "~15.5.7",
         "react": "~16.2.0",
         "react-dom": "~16.2.0"
     }
