@@ -25,21 +25,12 @@ const cardActionStyle = {
     float: 'right',
 };
 
-const InstrumentListActions = ({ resource, filters, displayedFilters, filterValues, basePath, showFilter }) => (
+const StationListActions = ({ resource, filters, displayedFilters, filterValues, basePath, showFilter }) => (
     <CardActions style={cardActionStyle}>
         {filters && React.cloneElement(filters, { resource, showFilter, displayedFilters, filterValues, context: 'button' }) }
         <CreateButton label={null} basePath={basePath} />
         <RefreshButton label={null} />
     </CardActions>
-);
-
-const InstrumentFilter = (props) => (
-    <Filter label={null} {...props}>
-        <ReferenceInput label="Marque" source="brand.id" reference="brands">
-            <SelectInput />
-        </ReferenceInput>
-        <BooleanInput label="À vérifier" source="to_be_checked" />
-    </Filter>
 );
 
 const colored = Component => props => props.record[props.source]
@@ -49,17 +40,15 @@ const colored = Component => props => props.record[props.source]
 const ToBeCheckedField = colored(BooleanField);
 
 
-export const InstrumentList = (props) => (
+export const StationList = (props) => (
     <List
-        title="Instruments"
-        actions={<InstrumentListActions />}
-        filters={<InstrumentFilter />}
+        title="Stations"
+        actions={<StationListActions />}
         {...props}
     >
         <Datagrid>
-            <TextField source="model" label="Modèle" />
-            <TextField source="brand.name" label="Marque" />
-            <ToBeCheckedField source="to_be_checked" label="À Vérfier" />
+            <TextField source="name" label="Nom" />
+            <TextField source="location.full_address" label="Adresse" />
             <EditButton label={null} />
         </Datagrid>
     </List>

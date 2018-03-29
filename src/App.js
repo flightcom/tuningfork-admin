@@ -1,12 +1,13 @@
 // in src/App.js
 import React from "react";
-import { Admin, Resource, Delete } from "admin-on-rest";
+import { Admin, Resource } from "admin-on-rest";
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import myApiRestClient from './restClient';
 
 import UserIcon from "material-ui/svg-icons/social/group";
 import InstrumentIcon from "material-ui/svg-icons/image/music-note";
+import StationIcon from "material-ui/svg-icons/maps/place";
 
 import Dashboard from "./Dashboard";
 import authClient from "./authClient";
@@ -23,6 +24,13 @@ import { UserDelete } from "./components/User/delete";
 import { InstrumentList } from "./components/Instrument/list";
 import { InstrumentCreate } from "./components/Instrument/create";
 import { InstrumentEdit } from "./components/Instrument/edit";
+// Station
+import { StationList } from "./components/Station/list";
+import { StationCreate } from "./components/Station/create";
+import { StationEdit } from "./components/Station/edit";
+import { StationDelete } from "./components/Station/delete";
+// Brand
+import { BrandCreate } from "./components/Brand/create"
 
 
 const App = () => (
@@ -35,6 +43,7 @@ const App = () => (
     >
         <Resource
             name="users"
+            options={{ label: "Utilisateurs" }}
             icon={UserIcon}
             list={UserList}
             edit={UserEdit}
@@ -47,9 +56,19 @@ const App = () => (
             list={InstrumentList}
             edit={InstrumentEdit}
             create={InstrumentCreate}
-            // remove={InsturmentDelete}
+            // remove={InstrumentDelete}
         />
-        <Resource name="brands" />
+
+        <Resource
+            name="stations"
+            icon={StationIcon}
+            list={StationList}
+            edit={StationEdit}
+            create={StationCreate}
+            remove={StationDelete}
+        />
+
+        <Resource name="brands" create={BrandCreate} />
         <Resource name="categories" />
         <Resource name="subcategories" />
         <Resource name="roles" />

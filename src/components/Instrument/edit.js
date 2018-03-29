@@ -1,18 +1,17 @@
 import React from 'react';
 import {
+    CreateButton,
     DeleteButton,
     Edit,
     ListButton,
     ReferenceInput,
     ReferenceArrayInput,
     SelectInput,
-    SelectArrayInput,
     SimpleForm,
     TextInput,
     required,
 } from 'admin-on-rest';
 
-import { select } from 'redux-saga/effects';
 import { CardActions } from 'material-ui/Card';
 
 import CustomSelectArrayInput from '../Input/CustomSelectArrayInput';
@@ -60,6 +59,7 @@ export const InstrumentEdit = (props) => (
             >
                 <SelectInput />
             </ReferenceInput>
+            <div><CreateButton basePath={'/brands'} /></div>
             <CategoryReferenceArrayInput>
                 <ReferenceArrayInput
                     label="Catégorie"

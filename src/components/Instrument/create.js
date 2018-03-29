@@ -4,7 +4,6 @@ import {
     ReferenceInput,
     ReferenceArrayInput,
     SelectInput,
-    SelectArrayInput,
     SimpleForm,
     TextInput,
     required,

@@ -1,6 +1,6 @@
 import {
-    blue500, blue700, blue900,
-    pinkA200, deepPurpleA200,
+    blue500, blue700,
+    pinkA200,
     grey100, grey300, grey400, grey500,
     white, darkBlack, fullBlack,
 } from 'material-ui/styles/colors';
