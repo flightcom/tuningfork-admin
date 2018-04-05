@@ -1,5 +1,5 @@
 import React from 'react';
-import { CardActions } from 'material-ui/Card';
+import { Card, CardActions } from 'material-ui/Card';
 import {
     BooleanField,
     BooleanInput,
@@ -48,19 +48,22 @@ const colored = Component => props => props.record[props.source]
 
 const ToBeCheckedField = colored(BooleanField);
 
-
-export const InstrumentList = (props) => (
-    <List
-        title="Instruments"
-        actions={<InstrumentListActions />}
-        filters={<InstrumentFilter />}
-        {...props}
-    >
-        <Datagrid>
-            <TextField source="model" label="Modèle" />
-            <TextField source="brand.name" label="Marque" />
-            <ToBeCheckedField source="to_be_checked" label="À Vérfier" />
-            <EditButton label={null} />
-        </Datagrid>
-    </List>
+const InstrumentList = (props) => (
+    <Card style={{ margin: '2em' }}>
+        <List
+            title="Instruments"
+            actions={<InstrumentListActions />}
+            filters={<InstrumentFilter />}
+            {...props}
+        >
+            <Datagrid>
+                <TextField source="model" label="Modèle" />
+                <TextField source="brand.name" label="Marque" />
+                <ToBeCheckedField source="to_be_checked" label="À Vérfier" />
+                <EditButton label={null} />
+            </Datagrid>
+        </List>
+    </Card>
 );
+
+export default InstrumentList;

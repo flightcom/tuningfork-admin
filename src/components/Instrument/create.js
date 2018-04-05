@@ -1,4 +1,5 @@
 import React from 'react';
+import { Card } from 'material-ui/Card';
 import {
     Create,
     ReferenceInput,
@@ -22,33 +23,37 @@ const handleOnChange = (chips) => {
     selectedCategoryId = chips[keys[0]];
 }
 
-export const InstrumentCreate = (props) => (
-    <Create title="Nouvel instrument" {...props}>
-        <SimpleForm>
-            {/* Basic Informations */}
-            <TextInput label="Modèle" source="model" validate={required} />
-            <TextInput label="Numéro de série" source="serial_number" />
-            <TextInput label="Code barre" source="barcode" />
-            <ReferenceInput
-                label="Marque"
-                source="brand_id"
-                reference="brands"
-                allowEmpty
-                validate={required}
-            >
-                <SelectInput />
-            </ReferenceInput>
-            <ReferenceArrayInput
-                label="Catégorie"
-                source="category_ids"
-                reference="categories"
-                filterToQuery={(searchText) => ({ category_id: selectedCategoryId })}
-                onChange={handleOnChange}
-                allowEmpty
-                validate={required}
-            >
-                <CustomSelectArrayInput />
-            </ReferenceArrayInput>
-        </SimpleForm>
-    </Create>
+const InstrumentCreate = (props) => (
+    <Card style={{ margin: '2em' }}>
+        <Create title="Nouvel instrument" {...props}>
+            <SimpleForm>
+                {/* Basic Informations */}
+                <TextInput label="Modèle" source="model" validate={required} />
+                <TextInput label="Numéro de série" source="serial_number" />
+                <TextInput label="Code barre" source="barcode" />
+                <ReferenceInput
+                    label="Marque"
+                    source="brand_id"
+                    reference="brands"
+                    allowEmpty
+                    validate={required}
+                >
+                    <SelectInput />
+                </ReferenceInput>
+                <ReferenceArrayInput
+                    label="Catégorie"
+                    source="category_ids"
+                    reference="categories"
+                    filterToQuery={(searchText) => ({ category_id: selectedCategoryId })}
+                    onChange={handleOnChange}
+                    allowEmpty
+                    validate={required}
+                >
+                    <CustomSelectArrayInput />
+                </ReferenceArrayInput>
+            </SimpleForm>
+        </Create>
+    </Card>
 );
+
+export default InstrumentCreate;

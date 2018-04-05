@@ -1,5 +1,5 @@
 import React from 'react';
-import { CardActions } from 'material-ui/Card';
+import { Card, CardActions } from 'material-ui/Card';
 import {
     CreateButton,
     Datagrid,
@@ -35,14 +35,18 @@ const UserFilter = (props) => (
     </Filter>
 );
 
-export const UserList = (props) => (
-    <List title="Utilisateurs" actions={<UserListActions />} {...props} filters={<UserFilter />}>
-        <Datagrid>
-            <TextField source="first_name" label="Prénom" />
-            <TextField source="last_name" label="Nom" />
-            <TextField source="phone" label="Téléphone" />
-            <EmailField source="email" label="Courriel" />
-            <EditButton />
-        </Datagrid>
-    </List>
+const UserList = (props) => (
+    <Card style={{ margin: '2em' }}>
+        <List title="Utilisateurs" actions={<UserListActions />} {...props} filters={<UserFilter />}>
+            <Datagrid>
+                <TextField source="first_name" label="Prénom" />
+                <TextField source="last_name" label="Nom" />
+                <TextField source="phone" label="Téléphone" />
+                <EmailField source="email" label="Courriel" />
+                <EditButton />
+            </Datagrid>
+        </List>
+    </Card>
 );
+
+export default UserList;

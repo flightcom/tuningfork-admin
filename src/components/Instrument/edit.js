@@ -1,4 +1,5 @@
 import React from 'react';
+import { Card } from 'material-ui/Card';
 import {
     CreateButton,
     DeleteButton,
@@ -44,34 +45,38 @@ const InstrumentEditActions = ({ basePath, data }) => (
     </CardActions>
 );
 
-export const InstrumentEdit = (props) => (
-    <Edit title={<InstrumentTitle />} actions={<InstrumentEditActions />} {...props}>
-        <SimpleForm>
-            {/* Basic Informations */}
-            <TextInput label="Modèle" source="model" validate={required} />
-            <TextInput label="Numéro de série" source="serial_number" />
-            <TextInput label="Code barre" source="barcode" />
-            <ReferenceInput
-                label="Marque"
-                source="brand_id"
-                reference="brands"
-                validate={required}
-            >
-                <SelectInput />
-            </ReferenceInput>
-            <div><CreateButton basePath={'/brands'} /></div>
-            <CategoryReferenceArrayInput>
-                <ReferenceArrayInput
-                    label="Catégorie"
-                    source="category_ids"
-                    reference="categories"
-                    onChange={handleOnChange}
-                    filterToQuery={(searchText) => ({ category_id: selectedCategoryId })}
+const InstrumentEdit = (props) => (
+    <Card style={{ margin: '2em' }}>
+        <Edit title={<InstrumentTitle />} actions={<InstrumentEditActions />} {...props}>
+            <SimpleForm>
+                {/* Basic Informations */}
+                <TextInput label="Modèle" source="model" validate={required} />
+                <TextInput label="Numéro de série" source="serial_number" />
+                <TextInput label="Code barre" source="barcode" />
+                <ReferenceInput
+                    label="Marque"
+                    source="brand_id"
+                    reference="brands"
                     validate={required}
                 >
-                    <CustomSelectArrayInput />
-                </ReferenceArrayInput>
-            </CategoryReferenceArrayInput>
-        </SimpleForm>
-    </Edit>
+                    <SelectInput />
+                </ReferenceInput>
+                <div><CreateButton basePath={'/brands'} /></div>
+                <CategoryReferenceArrayInput>
+                    <ReferenceArrayInput
+                        label="Catégorie"
+                        source="category_ids"
+                        reference="categories"
+                        onChange={handleOnChange}
+                        filterToQuery={(searchText) => ({ category_id: selectedCategoryId })}
+                        validate={required}
+                    >
+                        <CustomSelectArrayInput />
+                    </ReferenceArrayInput>
+                </CategoryReferenceArrayInput>
+            </SimpleForm>
+        </Edit>
+    </Card>
 );
+
+export default InstrumentEdit;

@@ -11,7 +11,7 @@ import {
     required,
 } from 'admin-on-rest';
 
-export const UserCreate = (props) => (
+const UserCreate = (props) => (
     <Create title="Nouvel utilisateur" {...props}>
         <TabbedForm>
             {/* Basic Informations */}
@@ -38,3 +38,5 @@ export const UserCreate = (props) => (
         </TabbedForm>
     </Create>
 );
+
+export default UserCreate;

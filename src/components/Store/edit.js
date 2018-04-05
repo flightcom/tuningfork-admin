@@ -11,7 +11,7 @@ import {
 import { CardActions } from 'material-ui/Card';
 // import AddressInput from '../Input/AddressInput';
 
-const StationTitle = ({ record }) => {
+const StoreTitle = ({ record }) => {
     return <span>{record ? record.name : ''}</span>;
 };
 
@@ -21,16 +21,16 @@ const cardActionStyle = {
     float: 'right',
 };
 
-const StationEditActions = ({ basePath, data }) => (
+const StoreEditActions = ({ basePath, data }) => (
     <CardActions style={cardActionStyle}>
         <ListButton label={null} basePath={basePath} />
         <DeleteButton label={null} basePath={basePath} record={data} />
     </CardActions>
 );
 
-const StationEdit = (props) => (
+const StoreEdit = (props) => (
     <Card style={{ margin: '2em' }}>
-        <Edit title={<StationTitle />} actions={<StationEditActions />} {...props}>
+        <Edit title={<StoreTitle />} actions={<StoreEditActions />} {...props}>
             <SimpleForm>
                 <TextInput label="Nom" source="name" />
                 <TextInput label="Adresse" source="location.address" />
@@ -43,4 +43,4 @@ const StationEdit = (props) => (
     </Card>
 );
 
-export default StationEdit;
+export default StoreEdit;

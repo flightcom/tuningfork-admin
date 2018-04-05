@@ -28,7 +28,7 @@ const cardActionStyle = {
     float: 'right',
 };
 
-const StationListActions = ({ resource, filters, displayedFilters, filterValues, basePath, showFilter }) => (
+const StoreListActions = ({ resource, filters, displayedFilters, filterValues, basePath, showFilter }) => (
     <CardActions style={cardActionStyle}>
         {filters && React.cloneElement(filters, { resource, showFilter, displayedFilters, filterValues, context: 'button' }) }
         <CreateButton label={null} basePath={basePath} />
@@ -43,11 +43,11 @@ const colored = Component => props => props.record[props.source]
 const ToBeCheckedField = colored(BooleanField);
 
 
-const StationList = (props) => (
+const StoreList = (props) => (
     <Card style={{ margin: '2em' }}>
         <List
-            title="Stations"
-            actions={<StationListActions />}
+            title="Stores"
+            actions={<StoreListActions />}
             {...props}
         >
             <Datagrid>
@@ -59,4 +59,4 @@ const StationList = (props) => (
     </Card>
 );
 
-export default StationList;
+export default StoreList;

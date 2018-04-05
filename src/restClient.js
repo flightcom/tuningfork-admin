@@ -90,7 +90,7 @@ const convertRESTRequestToHTTP = (type, resource, params) => {
  */
 const convertHTTPResponseToREST = (response, type, resource, params) => {
   const { headers, json } = response;
-//   console.log(type, json);
+  console.log(type, json);
   switch (type) {
     case GET_LIST:
       return {

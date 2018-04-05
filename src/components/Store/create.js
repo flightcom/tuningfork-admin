@@ -7,9 +7,9 @@ import {
     required,
 } from 'admin-on-rest';
 
-const StationCreate = (props) => (
+const StoreCreate = (props) => (
     <Card style={{ margin: '2em' }}>
-        <Create title="Nouvelle station instrumentale" {...props}>
+        <Create title="Nouveau store" {...props}>
             <SimpleForm>
                 <TextInput label="Nom" source="name" validate={required} />
                 <TextInput label="Adresse" source="location.address" validate={required} />
@@ -22,4 +22,4 @@ const StationCreate = (props) => (
     </Card>
 );
 
-export default StationCreate;
+export default StoreCreate;

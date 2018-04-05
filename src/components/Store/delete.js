@@ -2,14 +2,14 @@ import React from 'react';
 import { Card } from 'material-ui/Card';
 import { Delete } from 'admin-on-rest';
 
-const StationTitle = ({ record }) => {
+const StoreTitle = ({ record }) => {
     return <span>Supprimer {record ? `${record.name} ?` : ''}</span>;
 };
 
-const StationDelete = (props) => (
+const StoreDelete = (props) => (
     <Card style={{ margin: '2em' }}>
-        <Delete title={<StationTitle />} {...props} />
+        <Delete title={<StoreTitle />} {...props} />
     </Card>
 );
 
-export default StationDelete;
+export default StoreDelete;
