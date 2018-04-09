@@ -1,0 +1,28 @@
+{
+    "presets": [
+        [
+            "env",
+            {
+                "modules": false,
+                "useBuiltIns": true,
+                "targets": { "browsers": [">5%"] }
+            }
+        ],
+        "stage-0",
+        "react",
+        "flow"
+    ],
+    "plugins": ["transform-decorators-legacy"],
+    "env": {
+        "production": {
+            "plugins": [
+                "transform-react-remove-prop-types",
+                "transform-react-inline-elements",
+                "transform-react-constant-elements"
+            ]
+        },
+        "development": {
+            "plugins": [["flow-react-proptypes", { "ignoreNodeModules": true }]]
+        }
+    }
+}
