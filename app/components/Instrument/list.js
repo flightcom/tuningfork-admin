@@ -14,10 +14,12 @@ import {
     TextField,
 } from 'admin-on-rest';
 
+import colors from 'styles/colors';
+
 import {
     colorGreen,
     colorRed,
-} from '../../styles/common';
+} from 'styles/common';
 
 const cardActionStyle = {
     zIndex: 2,
@@ -48,6 +50,12 @@ const colored = Component => props => props.record[props.source]
 
 const ToBeCheckedField = colored(BooleanField);
 
+const instrumentRowStyle = (record, index) => ({
+    backgroundColor: record.is_available
+        ? colors.greenSemiTransparent
+        : colors.redSemiTransparent,
+});
+
 const InstrumentList = (props) => (
     <List
         title="Instruments"
@@ -55,7 +63,7 @@ const InstrumentList = (props) => (
         filters={<InstrumentFilter />}
         {...props}
     >
-        <Datagrid>
+        <Datagrid rowStyle={instrumentRowStyle}>
             <TextField source="model" label="Modèle" />
             <TextField source="brand.name" label="Marque" />
             <ToBeCheckedField source="to_be_checked" label="À Vérfier" />

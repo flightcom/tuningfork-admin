@@ -93,19 +93,23 @@ const convertHTTPResponseToREST = (response, type, resource, params) => {
   console.log(type, json);
   switch (type) {
     case GET_LIST:
-      return {
-        data: json.data.map(x => x),
-        total: json.total
-      };
+        return {
+            data: json.data.map(x => x),
+            total: json.total
+        };
     case GET_MANY:
-      return {
-        data: json.data.map(x => x),
-        total: json.total
-      };
+        return {
+            data: json.data.map(x => x),
+            total: json.total
+        };
+    case GET_MANY_REFERENCE:
+        return {
+            data: json.data.map(x => x),
+        };
     case CREATE:
-      return { data: { ...params.data, id: json.id } };
+        return { data: { ...params.data, id: json.id } };
     default:
-      return { data: json };
+        return { data: json };
   }
 };
 

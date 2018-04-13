@@ -1,12 +1,15 @@
 import React from 'react';
 import { CardActions } from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
 import {
     CreateButton,
     Datagrid,
+    DateField,
     EditButton,
     EmailField,
     Filter,
     List,
+    ReferenceField,
     RefreshButton,
     TextField,
     TextInput,
@@ -35,7 +38,15 @@ const LoanFilter = (props) => (
 const LoanList = (props) => (
     <List title="Prêts" actions={<LoanListActions />} {...props} filters={<LoanFilter />}>
         <Datagrid>
-            <TextField source="first_name" label="Prénom" />
+            <DateField source="starts_at" label="Début" />
+            <DateField source="ends_at" label="Fin" />
+            <DateField source="ended_at" label="Fin (réelle)" />
+            <ReferenceField label="Utilisateur" source="user.id" reference="users">
+                <TextField source="full_name" />
+            </ReferenceField>
+            <ReferenceField label="Instrument" source="instrument.id" reference="instruments">
+                <TextField source="categories[0].name" />
+            </ReferenceField>
             <EditButton />
         </Datagrid>
     </List>

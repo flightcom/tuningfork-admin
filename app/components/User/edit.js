@@ -4,15 +4,25 @@ import FlatButton from 'material-ui/FlatButton';
 import restClient from '../../restClient';
 
 import {
+    Datagrid,
+    DateField,
     DateInput,
     DeleteButton,
     Edit,
+    EditButton,
     FormTab,
+    List,
     ListButton,
     TabbedForm,
     CheckboxGroupInput,
+    ReferenceField,
     ReferenceInput,
+    ReferenceManyField,
+    SingleFieldList,
+    Show,
+    ShowButton,
     SelectInput,
+    TextField,
     TextInput
 } from 'admin-on-rest';
 
@@ -43,6 +53,14 @@ const UserEditActions = ({ basePath, data }) => (
     </CardActions>
 );
 
+const ShowInstrumentButton = (props) => {
+    console.log(props);
+    return (
+        <EditButton label={null} basePath={'/instruments'} record={props.record} />
+        // <FlatButton label="Voir" />
+    );
+};
+
 const UserEdit = (props) => (
     <Edit title={<UserTitle />} actions={<UserEditActions />} {...props}>
         <TabbedForm>
@@ -62,6 +80,24 @@ const UserEdit = (props) => (
                 <TextInput label="Code Postal" source="location.postalCode" />
                 <TextInput label="Ville" source="location.city" />
                 <TextInput label="Pays" source="location.country" />
+            </FormTab>
+            <FormTab label="Prêts">
+                <ReferenceManyField addLabel={false} reference="loans" target="user_id">
+                    <Datagrid>
+                        <DateField label="Début" source="starts_at" />
+                        <DateField label="Fin (théorique)" source="ends_at" />
+                        <DateField label="Fin (réelle)" source="ended_at" />
+                        {/* <ReferenceField
+                            label="Instrument"
+                            source="instrument.id"
+                            reference="instruments"
+                            // linkType={false}
+                        >
+                            <TextField source="categories[0].name" />
+                        </ReferenceField> */}
+                        <EditButton basePath="/instruments" />
+                    </Datagrid>
+                </ReferenceManyField>
             </FormTab>
         </TabbedForm>
     </Edit>

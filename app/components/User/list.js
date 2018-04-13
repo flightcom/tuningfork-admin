@@ -38,12 +38,14 @@ const UserFilter = (props) => (
 );
 
 const userRowStyle = (record, index) => ({
-    backgroundColor: record.has_subscribed ? colors.green : colors.red,
+    backgroundColor: record.has_subscribed
+        ? colors.greenSemiTransparent
+        : colors.redSemiTransparent,
 });
 
 const UserList = (props) => (
     <List title="Utilisateurs" actions={<UserListActions />} {...props} filters={<UserFilter />}>
-        <Datagrid>
+        <Datagrid rowStyle={userRowStyle}>
             <TextField source="first_name" label="Prénom" />
             <TextField source="last_name" label="Nom" />
             <TextField source="phone" label="Téléphone" />
