@@ -98,7 +98,6 @@ const commonConfig = {
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': `"development"`,
             __DEV__: false,
-            __STG__: false,
             __PROD__: false,
         }),
         // Always expose NODE_ENV to webpack, in order to use `process.env.NODE_ENV` inside your code for any environment check
@@ -168,32 +167,10 @@ const prodConfig = {
     devtool: 'source-map',
 
     plugins: [
-        // webpack.optimize.UglifyJsPlugin doesn't yet support es6
-        // new UglifyJSPlugin(),
-        // Ideal would be babel-minify when it comes out of beta
-
-        // Everything below is commented out until
-        // webpack.optimize.UglifyJsPlugin works
-
-        // new webpack.optimize.DedupePlugin(),
-        // new webpack.optimize.OccurrenceOrderPlugin(),
-        // new webpack.optimize.AggressiveMergingPlugin(),
-
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
             minChunks: isVendor, // eslint-disable-line no-use-before-define
         }),
-
-        // new webpack.optimize.CommonsChunkPlugin({
-        //     name: 'manifest',
-        // }),
-
-        // new webpack.optimize.CommonsChunkPlugin({
-        //     name: 'vendor',
-        //     children: true,
-        //     minChunks: 2,
-        //     async: true,
-        // }),
 
         // Minify and optimize the index.html
         new HtmlWebpackPlugin({
@@ -224,15 +201,6 @@ const devPlugins = {
     ]
 };
 
-const stagingPlugins = {
-    plugins: [
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': `"production"`,
-            __STG__: true,
-        }),
-    ]
-};
-
 const prodPlugins = {
     plugins: [
         new webpack.DefinePlugin({
@@ -253,7 +221,7 @@ function isVendor({ resource }) {
 
 
 module.exports = (env) => {
-    if (env !=='staging') {
+    if (env ==='development') {
         process.env.BABEL_ENV = env;
     } else {
         process.env.BABEL_ENV = 'production';
@@ -261,8 +229,6 @@ module.exports = (env) => {
 
     if (env === 'development') {
         return merge(devPlugins, commonConfig, devConfig);
-    } else if ( env === 'staging') {
-        return merge(stagingPlugins, commonConfig, prodConfig);
     }
 
     return merge(prodPlugins, commonConfig, prodConfig);
