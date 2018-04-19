@@ -1,12 +1,19 @@
 // in src/authClient.js
-import { AUTH_LOGIN, AUTH_LOGOUT, AUTH_ERROR, AUTH_CHECK } from 'admin-on-rest';
+import {
+    AUTH_LOGIN,
+    AUTH_LOGOUT,
+    AUTH_ERROR,
+    AUTH_CHECK
+} from 'admin-on-rest';
+
+import { API_URL, API_VER } from 'env';
 
 export default (type, params) => {
     // called when the user attempts to log in
     if (type === AUTH_LOGIN) {
         const { username, password } = params;
         const email = username;
-        const request = new Request('http://api.tuningfork.test:8008/api/v1/auth/login', {
+        const request = new Request(`${API_URL}${API_VER}/auth/login`, {
             method: 'POST',
             body: JSON.stringify({ email, password }),
             headers: new Headers({ 'Content-Type': 'application/json' }),
