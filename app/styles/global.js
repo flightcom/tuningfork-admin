@@ -10,4 +10,8 @@ injectGlobal`
         padding: 0;
         font-family: sans-serif;
     }
+
+    .Layout-appFrame-2 {
+        flex: 1;
+    }
 `;
