@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import moment from 'moment';
 
-import FlatButton from 'material-ui/FlatButton';
+import FlatButton from 'material-ui/Button';
 import { unsubscribe as unsubscribeAction } from '../../actions/User/unsubscribe';
 
 class UnsubscribeButton extends React.Component {

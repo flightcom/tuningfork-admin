@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import moment from 'moment';
 
-import FlatButton from 'material-ui/FlatButton';
+import FlatButton from 'material-ui/Button';
 import { subscribe as subscribeAction } from '../../actions/User/subscribe';
 
 class SubscribeButton extends React.Component {
