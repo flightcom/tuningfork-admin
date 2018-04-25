@@ -1,10 +1,11 @@
 // in src/Dashboard.js
 import React from 'react';
-import { Card, CardHeader, CardText } from 'material-ui/Card';
+import Card, { CardContent } from 'material-ui/Card';
+import { ViewTitle } from 'react-admin';
 
 export default () => (
     <Card>
-        <CardHeader title="Welcome to the administration" />
-        <CardText>Lorem ipsum sic dolor amet...</CardText>
+        <ViewTitle title="Welcome to the administration" />
+        <CardContent>Lorem ipsum sic dolor amet...</CardContent>
     </Card>
 );

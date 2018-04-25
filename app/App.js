@@ -64,7 +64,6 @@ const App = () => (
         dashboard={Dashboard}
         dataProvider={dataProvider}
         customSagas={[ subscribeSaga, unsubscribeSaga ]}
-        customRoutes={customRoutes}
     >
         <Resource
             name="users"
