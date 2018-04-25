@@ -24,7 +24,7 @@ import {
     showNotification
 } from 'react-admin';
 
-import restClient from '../../restClient';
+import dataProvider from '../../dataProvider';
 
 Geocode.setApiKey("AIzaSyAtX1tezFjbbrMLtlpqiNEkkTByUkJQjCw");
 
@@ -98,7 +98,7 @@ const MyMapComponent = compose(
 
 let markers = [];
 
-const getMarkers = () => restClient(GET_LIST, 'map', {
+const getMarkers = () => dataProvider(GET_LIST, 'map', {
     pagination: {},
     sort: {},
 }).then((response) => {

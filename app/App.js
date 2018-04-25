@@ -3,7 +3,7 @@ import React from "react";
 import { Route } from 'react-router-dom'
 import { Admin, Resource } from "react-admin";
 
-import myApiRestClient from './restClient';
+import dataProvider from './dataProvider';
 
 import UserIcon from "@material-ui/icons/Group";
 import InstrumentIcon from "@material-ui/icons/MusicNote";
@@ -62,7 +62,7 @@ const App = () => (
         title="tuningfork"
         authClient={authClient}
         dashboard={Dashboard}
-        restClient={myApiRestClient}
+        dataProvider={dataProvider}
         customSagas={[ subscribeSaga, unsubscribeSaga ]}
         customRoutes={customRoutes}
     >

@@ -1,7 +1,6 @@
 import React from 'react';
 import { CardActions } from 'material-ui/Card';
 import FlatButton from 'material-ui/Button';
-import restClient from '../../restClient';
 
 import {
     Datagrid,
