@@ -1,20 +1,9 @@
 // @flow
 
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import UserConfirm from 'views/UserConfirm';
 
-import { StationMap } from "./components/Station/map";
-
-function Routes() {
-    return (
-        <Switch>
-            <Route
-                path="/stations/map"
-                component={StationMap}
-                exact
-            />
-        </Switch>
-    );
-}
-
-export default Routes;
+export default [
+    <Route exact path="/confirm" component={UserConfirm} />,
+];

@@ -55,7 +55,8 @@ import SubscriptionCreate from "./components/Subscription/create";
 import subscribeSaga from './sagas/subscribe';
 import unsubscribeSaga from './sagas/unsubscribe';
 
-// import Routes from './routes';
+// Routes
+import customRoutes from './routes';
 
 const App = () => (
     <Admin
@@ -66,6 +67,7 @@ const App = () => (
         dashboard={Dashboard}
         restClient={myApiRestClient}
         customSagas={[ subscribeSaga, unsubscribeSaga ]}
+        customRoutes={customRoutes}
     >
         <Resource
             name="users"

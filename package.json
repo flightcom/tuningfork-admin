@@ -46,7 +46,6 @@
         "webpack-merge": "4.1.1"
     },
     "dependencies": {
-        "admin-on-rest": "~1.4.0",
         "aor-dependent-input": "^1.2.0",
         "babel-polyfill": "6.26.0",
         "lodash.get": "~4.4.2",
@@ -54,6 +53,7 @@
         "moment": "^2.22.0",
         "prop-types": "~15.5.7",
         "react": "~16.2.0",
+        "react-admin": "1.4.1",
         "react-dom": "~16.2.0",
         "react-geocode": "^0.0.7",
         "react-google-maps": "9.4.5",

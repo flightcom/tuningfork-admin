@@ -1,6 +1,7 @@
 import React from 'react';
 import { CardActions } from 'material-ui/Card';
 import {
+    BooleanInput,
     CreateButton,
     Datagrid,
     EditButton,
@@ -34,6 +35,7 @@ const UserFilter = (props) => (
         <TextInput label="Nom" source="last_name" />
         <TextInput label="Courriel" source="email" />
         <TextInput label="Téléphone" source="phone" />
+        <BooleanInput label="A souscrit" source="has_subscribed" />
     </Filter>
 );
 
