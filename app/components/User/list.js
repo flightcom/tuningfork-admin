@@ -11,7 +11,7 @@ import {
     RefreshButton,
     TextField,
     TextInput,
-} from 'admin-on-rest';
+} from 'react-admin';
 
 import colors from 'styles/colors';
 

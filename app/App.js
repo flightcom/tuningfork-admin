@@ -1,23 +1,22 @@
 // in src/App.js
 import React from "react";
 import { Route } from 'react-router-dom'
-import { Admin, Resource } from "admin-on-rest";
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import { Admin, Resource } from "react-admin";
 
 import myApiRestClient from './restClient';
 
-import UserIcon from "material-ui/svg-icons/social/group";
-import InstrumentIcon from "material-ui/svg-icons/image/music-note";
-import StationIcon from "material-ui/svg-icons/maps/place";
-import StoreIcon from "material-ui/svg-icons/action/store";
-import LoanIcon from "material-ui/svg-icons/action/compare-arrows";
+import UserIcon from "@material-ui/icons/Group";
+import InstrumentIcon from "@material-ui/icons/MusicNote";
+import StationIcon from "@material-ui/icons/Place";
+import StoreIcon from "@material-ui/icons/Store";
+import LoanIcon from "@material-ui/icons/CompareArrows";
 
 import Dashboard from "./Dashboard";
 import authClient from "./authClient";
 
 // Layout
 import FirstLayout from "./layouts/firstLayout";
-import myTheme from "./themes/blue";
+// import myTheme from "./themes/blue";
 
 // Components
 // User
@@ -60,8 +59,6 @@ import customRoutes from './routes';
 
 const App = () => (
     <Admin
-        theme={getMuiTheme(myTheme)}
-        // appLayout={FirstLayout}
         title="tuningfork"
         authClient={authClient}
         dashboard={Dashboard}

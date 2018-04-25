@@ -7,7 +7,7 @@ import {
     SimpleForm,
     TextInput,
     required,
-} from 'admin-on-rest';
+} from 'react-admin';
 
 import CustomSelectArrayInput from '../Input/CustomSelectArrayInput';
 

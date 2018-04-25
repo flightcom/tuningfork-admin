@@ -2,20 +2,22 @@ import React, { createElement, Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import autoprefixer from 'material-ui/utils/autoprefixer';
-import CircularProgress from 'material-ui/CircularProgress';
-import withWidth from 'material-ui/utils/withWidth';
-import compose from 'recompose/compose';
+import createMuiTheme from 'material-ui/styles/createMuiTheme';
 
+import { CircularProgress } from 'material-ui/Progress';
 import {
     AppBar,
     Menu,
     Notification,
     Sidebar,
-    defaultTheme,
-    setSidebarVisibility as setSidebarVisibilityAction,
-} from 'admin-on-rest';
+    setSidebarVisibility,
+} from 'react-admin';
+
+const theme = createMuiTheme({
+    palette: {
+        type: 'light',
+    },
+});
 
 const styles = {
     wrapper: {
@@ -31,19 +33,14 @@ const styles = {
     body: {
         backgroundColor: '#edecec',
         display: 'flex',
-        flex: '1 1 auto',
+        flex: 1,
+        marginTop: '2em',
         overflowY: 'hidden',
         overflowX: 'scroll',
     },
-    bodySmall: {
-        backgroundColor: '#fff',
-    },
     content: {
         flex: 1,
-    },
-    contentSmall: {
-        flex: 1,
-        paddingTop: '3em',
+        padding: '2em',
     },
     loader: {
         position: 'absolute',
@@ -54,13 +51,9 @@ const styles = {
     },
 };
 
-const prefixedStyles = {};
-
-class FirstLayout extends Component {
+class MyLayout extends Component {
     componentWillMount() {
-        if (this.props.width !== 1) {
-            this.props.setSidebarVisibility(true);
-        }
+        this.props.setSidebarVisibility(true);
     }
 
     render() {
@@ -70,49 +63,16 @@ class FirstLayout extends Component {
             isLoading,
             logout,
             menu,
-            theme,
             title,
-            width,
         } = this.props;
-
-        const muiTheme = getMuiTheme(theme);
-        if (!prefixedStyles.main) {
-            // do this once because user agent never changes
-            const prefix = autoprefixer(muiTheme);
-            prefixedStyles.wrapper = prefix(styles.wrapper);
-            prefixedStyles.main = prefix(styles.main);
-            prefixedStyles.body = prefix(styles.body);
-            prefixedStyles.bodySmall = prefix(styles.bodySmall);
-            prefixedStyles.content = prefix(styles.content);
-            prefixedStyles.contentSmall = prefix(styles.contentSmall);
-        }
         return (
-            <MuiThemeProvider muiTheme={muiTheme}>
-                <div style={prefixedStyles.wrapper}>
-                    <div style={prefixedStyles.main}>
-                        {width !== 1 && <AppBar title={title} />}
-                        <div
-                            className="body"
-                            style={
-                                width === 1 ? (
-                                    prefixedStyles.bodySmall
-                                ) : (
-                                    prefixedStyles.body
-                                )
-                            }
-                        >
-                            <div
-                                style={
-                                    width === 1 ? (
-                                        prefixedStyles.contentSmall
-                                    ) : (
-                                        prefixedStyles.content
-                                    )
-                                }
-                            >
-                                {children}
-                            </div>
-                            <Sidebar theme={theme}>
+            <MuiThemeProvider theme={theme}>
+                <div style={styles.wrapper}>
+                    <div style={styles.main}>
+                        <AppBar title={title} logout={logout} />
+                        <div className="body" style={styles.body}>
+                            <div style={styles.content}>{children}</div>
+                            <Sidebar>
                                 {createElement(menu || Menu, {
                                     logout,
                                     hasDashboard: !!dashboard,
@@ -122,9 +82,8 @@ class FirstLayout extends Component {
                         <Notification />
                         {isLoading && (
                             <CircularProgress
-                                className="app-loader"
-                                color="#fff"
-                                size={width === 1 ? 20 : 30}
+                                color="primary"
+                                size={30}
                                 thickness={2}
                                 style={styles.loader}
                             />
@@ -136,42 +95,16 @@ class FirstLayout extends Component {
     }
 }
 
-const componentPropType = PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.string,
-]);
-
-FirstLayout.propTypes = {
+MyLayout.propTypes = {
     children: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
-    dashboard: componentPropType,
+    dashboard: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
     isLoading: PropTypes.bool.isRequired,
-    logout: PropTypes.oneOfType([
-        PropTypes.node,
-        PropTypes.func,
-        PropTypes.string,
-    ]),
-    menu: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+    logout: PropTypes.oneOfType([PropTypes.func, PropTypes.element]),
+    menu: PropTypes.oneOfType([PropTypes.func, PropTypes.element]),
     setSidebarVisibility: PropTypes.func.isRequired,
-    title: PropTypes.node.isRequired,
-    theme: PropTypes.object.isRequired,
-    width: PropTypes.number,
+    title: PropTypes.string.isRequired,
 };
 
-FirstLayout.defaultProps = {
-    theme: defaultTheme,
-};
+const mapStateToProps = state => ({ isLoading: state.admin.loading > 0 });
 
-function mapStateToProps(state) {
-    return {
-        isLoading: state.admin.loading > 0,
-    };
-}
-
-const enhance = compose(
-    connect(mapStateToProps, {
-        setSidebarVisibility: setSidebarVisibilityAction,
-    }),
-    withWidth()
-);
-
-export default enhance(FirstLayout);
+export default connect(mapStateToProps, { setSidebarVisibility })(MyLayout);

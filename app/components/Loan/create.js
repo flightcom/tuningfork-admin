@@ -9,7 +9,7 @@ import {
     TextInput,
     email,
     required,
-} from 'admin-on-rest';
+} from 'react-admin';
 
 const instrumentOptionRenderer = choice => `${choice.brand.name} ${choice.model}`;
 const userOptionRenderer = choice => `${choice.first_name} ${choice.last_name}`;

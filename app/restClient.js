@@ -7,7 +7,7 @@ import {
   UPDATE,
   DELETE,
   fetchUtils
-} from "admin-on-rest";
+} from "react-admin";
 import { stringify } from "query-string";
 import { API_URL, API_VER } from './env';
 

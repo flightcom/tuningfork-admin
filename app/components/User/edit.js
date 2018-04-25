@@ -24,7 +24,7 @@ import {
     SelectInput,
     TextField,
     TextInput
-} from 'admin-on-rest';
+} from 'react-admin';
 
 import SubscribeButton from '../Buttons/SubscribeButton';
 import UnsubscribeButton from '../Buttons/UnsubscribeButton';

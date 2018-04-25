@@ -9,7 +9,7 @@ import {
     TextInput,
     email,
     required,
-} from 'admin-on-rest';
+} from 'react-admin';
 
 const UserCreate = (props) => (
     <Create title="Nouvel utilisateur" {...props}>

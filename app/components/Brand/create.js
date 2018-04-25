@@ -4,7 +4,7 @@ import {
     SimpleForm,
     TextInput,
     required,
-} from 'admin-on-rest';
+} from 'react-admin';
 
 const BrandCreate = (props) => (
     <Create title="Nouvelle marque" {...props}>

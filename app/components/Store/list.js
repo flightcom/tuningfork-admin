@@ -1,7 +1,7 @@
 import React from 'react';
 import { CardActions } from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
-import StationsMapIcon from 'material-ui/svg-icons/maps/place';
+import StationsMapIcon from '@material-ui/icons/Place';
 
 import {
     BooleanField,
@@ -15,7 +15,7 @@ import {
     RefreshButton,
     SelectInput,
     TextField,
-} from 'admin-on-rest';
+} from 'react-admin';
 
 import {
     colorGreen,

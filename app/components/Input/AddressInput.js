@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextInput } from 'admin-on-rest';
+import { TextInput } from 'react-admin';
 
 // const AddressInput = () => (
 //     <TextInput label="Adresse" source="location.address" />,

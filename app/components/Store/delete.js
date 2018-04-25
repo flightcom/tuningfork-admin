@@ -1,5 +1,5 @@
 import React from 'react';
-import { Delete } from 'admin-on-rest';
+import { Delete } from 'react-admin';
 
 const StoreTitle = ({ record }) => {
     return <span>Supprimer {record ? `${record.name} ?` : ''}</span>;

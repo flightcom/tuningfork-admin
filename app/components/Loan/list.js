@@ -13,7 +13,7 @@ import {
     RefreshButton,
     TextField,
     TextInput,
-} from 'admin-on-rest';
+} from 'react-admin';
 
 const cardActionStyle = {
     zIndex: 2,

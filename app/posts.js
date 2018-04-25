@@ -16,7 +16,7 @@ import {
     SimpleForm, 
     TextField,
     TextInput
-} from 'admin-on-rest';
+} from 'react-admin';
 
 const PostFilter = (props) => (
     <Filter {...props}>

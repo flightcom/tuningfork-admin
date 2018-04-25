@@ -4,7 +4,7 @@ import {
     AUTH_LOGOUT,
     AUTH_ERROR,
     AUTH_CHECK
-} from 'admin-on-rest';
+} from 'react-admin';
 
 import { API_URL, API_VER } from 'env';
 

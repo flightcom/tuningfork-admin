@@ -4,7 +4,7 @@ import {
     SimpleForm,
     TextInput,
     required,
-} from 'admin-on-rest';
+} from 'react-admin';
 
 const StoreCreate = (props) => (
     <Create title="Nouveau store" {...props}>

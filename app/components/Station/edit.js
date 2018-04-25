@@ -5,7 +5,7 @@ import {
     ListButton,
     SimpleForm,
     TextInput
-} from 'admin-on-rest';
+} from 'react-admin';
 
 import { CardActions } from 'material-ui/Card';
 // import AddressInput from '../Input/AddressInput';

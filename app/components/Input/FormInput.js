@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormField } from 'admin-on-rest';
+import { FormField } from 'react-admin';
 
 const FormInput = ({ input, ...rest }) =>
     input ? (

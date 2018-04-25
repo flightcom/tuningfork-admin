@@ -1,7 +1,7 @@
 // in src/comments/commentSaga.js
 import { put, takeEvery, all } from 'redux-saga/effects';
 import { push } from 'react-router-redux';
-import { showNotification } from 'admin-on-rest';
+import { showNotification } from 'react-admin';
 
 function* unsubscribeSuccess(record) {
     yield put(showNotification('User unsubscribed'));

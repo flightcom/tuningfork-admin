@@ -22,7 +22,7 @@ import {
     FlatButton,
     RefreshButton,
     showNotification
-} from 'admin-on-rest';
+} from 'react-admin';
 
 import restClient from '../../restClient';
 

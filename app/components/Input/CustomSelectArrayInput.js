@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import get from 'lodash.get';
 import ChipInput from 'material-ui-chip-input';
 
-import { FieldTitle, translate } from 'admin-on-rest';
+import { FieldTitle, translate } from 'react-admin';
 
 const dataSourceConfig = { text: 'text', value: 'value' };
 
@@ -172,7 +172,7 @@ export class CustomSelectArrayInput extends Component {
         } = this.props;
         if (typeof meta === 'undefined') {
             throw new Error(
-                "The SelectArrayInput component wasn't called within a redux-form <Field>. Did you decorate it and forget to add the addField prop to your component? See https://marmelab.com/admin-on-rest/Inputs.html#writing-your-own-input-component for details."
+                "The SelectArrayInput component wasn't called within a redux-form <Field>. Did you decorate it and forget to add the addField prop to your component? See https://marmelab.com/react-admin/Inputs.html#writing-your-own-input-component for details."
             );
         }
         const { touched, error } = meta;

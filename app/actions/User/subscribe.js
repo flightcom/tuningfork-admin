@@ -1,4 +1,4 @@
-import { CREATE } from 'admin-on-rest';
+import { CREATE } from 'react-admin';
 export const SUBSCRIBE = 'SUBSCRIBE';
 export const subscribe = (id, data, basePath) => ({
     type: SUBSCRIBE,

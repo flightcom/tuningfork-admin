@@ -4,7 +4,7 @@ import {
     SimpleForm,
     DateInput,
     required,
-} from 'admin-on-rest';
+} from 'react-admin';
 
 const SubscriptionCreate = (props) => (
     <Create title="Nouvelle souscription" {...props}>

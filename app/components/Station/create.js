@@ -4,7 +4,7 @@ import {
     SimpleForm,
     TextInput,
     required,
-} from 'admin-on-rest';
+} from 'react-admin';
 
 const StationCreate = (props) => (
     <Create title="Nouvelle station instrumentale" {...props}>
