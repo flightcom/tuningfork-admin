@@ -11,7 +11,7 @@ injectGlobal`
         font-family: sans-serif;
     }
 
-    .Layout-appFrame-2 {
+    [class^='Layout-appFrame-'] {
         flex: 1;
     }
 `;

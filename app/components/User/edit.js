@@ -38,19 +38,19 @@ const cardActionStyle = {
     float: 'right',
 };
 
-const UserEditActions = ({ basePath, data }) => (
-    <CardActions style={cardActionStyle}>
-        <ListButton label={null} basePath={basePath} />
-        {data && data.has_subscribed
-            ? (
-                <UnsubscribeButton basePath={basePath} record={data} />
-            ) : (
-                <SubscribeButton basePath={basePath} record={data} />
-            )
-        }
-        <DeleteButton label={null} basePath={basePath} record={data} />
-    </CardActions>
-);
+// const UserEditActions = ({ basePath, data }) => (
+//     <CardActions style={cardActionStyle}>
+//         <ListButton label={null} basePath={basePath} />
+//         {data && data.has_subscribed
+//             ? (
+//                 <UnsubscribeButton basePath={basePath} record={data} />
+//             ) : (
+//                 <SubscribeButton basePath={basePath} record={data} />
+//             )
+//         }
+//         <DeleteButton label={null} basePath={basePath} record={data} />
+//     </CardActions>
+// );
 
 const ShowInstrumentButton = (props) => {
     console.log(props);
@@ -61,7 +61,8 @@ const ShowInstrumentButton = (props) => {
 };
 
 const UserEdit = (props) => (
-    <Edit title={<UserTitle />} actions={<UserEditActions />} {...props}>
+    <Edit title={<UserTitle />} {...props}>
+    {/* <Edit title={<UserTitle />} actions={<UserEditActions />} {...props}> */}
         <TabbedForm>
             <FormTab label="Informations">
                 <TextInput label="Prénom" source="first_name" />

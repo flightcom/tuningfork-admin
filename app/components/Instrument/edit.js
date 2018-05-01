@@ -6,6 +6,7 @@ import {
     ListButton,
     ReferenceInput,
     ReferenceArrayInput,
+    SelectArrayInput,
     SelectInput,
     SimpleForm,
     TextInput,
@@ -14,8 +15,8 @@ import {
 
 import { CardActions } from 'material-ui/Card';
 
-import CustomSelectArrayInput from '../Input/CustomSelectArrayInput';
-import CategoryReferenceArrayInput from '../Input/CategoryReferenceArrayInput';
+// import CustomSelectArrayInput from '../Input/CustomSelectArrayInput';
+// import CategoryReferenceArrayInput from '../Input/CategoryReferenceArrayInput';
 
 let selectedCategoryId = null;
 
@@ -37,41 +38,35 @@ const cardActionStyle = {
     float: 'right',
 };
 
-const InstrumentEditActions = ({ basePath, data }) => (
-    <CardActions style={cardActionStyle}>
-        <ListButton label={null} basePath={basePath} />
-        <DeleteButton label={null} basePath={basePath} record={data} />
-    </CardActions>
-);
-
 const InstrumentEdit = (props) => (
-    <Edit title={<InstrumentTitle />} actions={<InstrumentEditActions />} {...props}>
+    <Edit title={<InstrumentTitle />} {...props}>
         <SimpleForm>
             {/* Basic Informations */}
-            <TextInput label="Modèle" source="model" validate={required} />
+            <TextInput label="Modèle" source="model" validate={required()} />
             <TextInput label="Numéro de série" source="serial_number" />
             <TextInput label="Code barre" source="barcode" />
             <ReferenceInput
                 label="Marque"
                 source="brand_id"
                 reference="brands"
-                validate={required}
+                validate={required()}
             >
                 <SelectInput />
             </ReferenceInput>
-            <div><CreateButton basePath={'/brands'} /></div>
-            <CategoryReferenceArrayInput>
+            {/* <div><CreateButton basePath={'/brands'} /></div> */}
+            {/* <CategoryReferenceArrayInput> */}
                 <ReferenceArrayInput
                     label="Catégorie"
                     source="category_ids"
                     reference="categories"
                     onChange={handleOnChange}
                     filterToQuery={(searchText) => ({ category_id: selectedCategoryId })}
-                    validate={required}
+                    validate={required()}
                 >
-                    <CustomSelectArrayInput />
+                    <SelectArrayInput />
+                    {/* <CustomSelectArrayInput /> */}
                 </ReferenceArrayInput>
-            </CategoryReferenceArrayInput>
+            {/* </CategoryReferenceArrayInput> */}
         </SimpleForm>
     </Edit>
 );

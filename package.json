@@ -52,6 +52,8 @@
         "material-ui-chip-input": "1.0.0-beta.4",
         "moment": "^2.22.0",
         "prop-types": "~15.5.7",
+        "ra-language-english": "^2.0.0-RC1",
+        "ra-language-french": "^2.0.0-RC1",
         "react": "~16.2.0",
         "react-admin": "2.0.0-RC2",
         "react-dom": "~16.2.0",

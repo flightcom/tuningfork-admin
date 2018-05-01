@@ -1,5 +1,7 @@
 import React from 'react';
 import { CardActions } from 'material-ui/Card';
+import { withStyles } from 'material-ui/styles';
+
 import {
     BooleanField,
     BooleanInput,
@@ -44,9 +46,15 @@ const InstrumentFilter = (props) => (
     </Filter>
 );
 
-const colored = Component => props => props.record[props.source]
-    ? <Component {...props} elStyle={colorRed} />
-    : <Component {...props} elStyle={colorGreen} />
+const colored = Component => withStyles({
+    colorDisabled: colorGreen,
+    colorPrimary: colorRed,
+})((props) => {
+    const className = props.record[props.source]
+        ? props.classes.colorPrimary
+        : props.classes.colorDisabled;
+    return <Component {...props} className={className} />
+});
 
 const ToBeCheckedField = colored(BooleanField);
 

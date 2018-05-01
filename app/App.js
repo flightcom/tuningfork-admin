@@ -1,7 +1,7 @@
 // in src/App.js
 import React from "react";
 import { Route } from 'react-router-dom'
-import { Admin, Resource } from "react-admin";
+import { Admin, Resource, resolveBrowserLocale } from "react-admin";
 
 import dataProvider from './dataProvider';
 
@@ -12,11 +12,14 @@ import StoreIcon from "@material-ui/icons/Store";
 import LoanIcon from "@material-ui/icons/CompareArrows";
 
 import Dashboard from "./Dashboard";
-import authClient from "./authClient";
+import authProvider from "./authProvider";
 
 // Layout
-import FirstLayout from "./layouts/firstLayout";
+import Layout from 'layouts/v2';
 // import myTheme from "./themes/blue";
+
+// Menu
+import Menu from './Menu';
 
 // Components
 // User
@@ -57,18 +60,34 @@ import unsubscribeSaga from './sagas/unsubscribe';
 // Routes
 import customRoutes from './routes';
 
+// Translations
+import englishMessages from './i18n/en';
+import frenchMessages from './i18n/fr';
+
+const messages = {
+    fr: frenchMessages,
+    en: englishMessages,
+};
+
+const i18nProvider = locale => {
+    console.log('locale', locale);
+    return messages[locale];
+}
+
 const App = () => (
     <Admin
         title="tuningfork"
-        authClient={authClient}
+        authProvider={authProvider}
         dashboard={Dashboard}
         dataProvider={dataProvider}
+        appLayout={Layout}
+        menu={Menu}
         customSagas={[ subscribeSaga, unsubscribeSaga ]}
+        locale={resolveBrowserLocale()}
+        i18nProvider={i18nProvider}
     >
         <Resource
             name="users"
-            options={{ label: "Utilisateurs" }}
-            icon={UserIcon}
             list={UserList}
             edit={UserEdit}
             create={UserCreate}
