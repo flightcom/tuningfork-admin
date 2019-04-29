@@ -21,21 +21,13 @@ const cardActionStyle = {
     float: 'right',
 };
 
-const UserListActions = ({ resource, filters, displayedFilters, filterValues, basePath, showFilter }) => (
-    <CardActions style={cardActionStyle}>
-        {filters && React.cloneElement(filters, { resource, showFilter, displayedFilters, filterValues, context: 'button' }) }
-        <CreateButton label={null} basePath={basePath} />
-        <RefreshButton label={null} />
-    </CardActions>
-);
-
 const UserFilter = (props) => (
     <Filter label={null} {...props}>
         <TextInput label="Prénom" source="first_name" />
         <TextInput label="Nom" source="last_name" />
         <TextInput label="Courriel" source="email" />
         <TextInput label="Téléphone" source="phone" />
-        <BooleanInput label="A souscrit" source="has_subscribed" />
+        {/* <BooleanInput label="A souscrit" source="has_subscribed" /> */}
     </Filter>
 );
 
@@ -46,8 +38,9 @@ const userRowStyle = (record, index) => ({
 });
 
 const UserList = (props) => (
-    <List title="Utilisateurs" actions={<UserListActions />} {...props} filters={<UserFilter />}>
-        <Datagrid rowStyle={userRowStyle}>
+    <List title="Utilisateurs" {...props} filters={<UserFilter />}>
+        {/* <Datagrid rowStyle={userRowStyle}> */}
+        <Datagrid>
             <TextField source="first_name" label="Prénom" />
             <TextField source="last_name" label="Nom" />
             <TextField source="phone" label="Téléphone" />
